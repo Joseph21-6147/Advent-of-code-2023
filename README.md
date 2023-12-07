@@ -9,7 +9,7 @@ In my solutions I use three development phases:
 * TEST    - uses small text file input, typically the same example data as before. This phase is aimed at checking if my file input is working properly;
 * PUZZLE  - this phase is used to generate the answer to the puzzle;
 
-Therefore, you find an input.test.txt and input.puzzle.txt for each day. Typically 
+Therefore, you typically find an input.test.txt and input.puzzle.txt for each day.  
 
 Have fun!
 
