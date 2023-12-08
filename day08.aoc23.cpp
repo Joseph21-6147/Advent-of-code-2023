@@ -202,7 +202,7 @@ void PrintGraphNode( GraphNode *pNode ) {
 // convenience intermediate ds for easy node finding and graph building
 typedef std::map<std::string, GraphNode *> GraphMap;
 
-// creates and returns a graph map (a std::map of sIDs vs GraphNode *)
+// creates and returns a GraphMap
 GraphMap GetGraphMap( DataStream &iData ) {
     GraphMap mResult;
     for (int i = 0; i < (int)iData.size(); i++) {
@@ -248,6 +248,8 @@ int FindDest( GraphNode *src, bool bDebug = false ) {
     if (src == nullptr) {
         std::cout << "ERROR: FindDest() --> can't find anything on nullptr input!" << std::endl;
     } else {
+
+        // walk the graph, following instructions L or R
         GraphNode *pCurNode = src;
         while (!IsDst( pCurNode->iDatum.sID )) {
             char cInstr = GetNextInstruction();
@@ -263,7 +265,7 @@ int FindDest( GraphNode *src, bool bDebug = false ) {
                         if (bDebug) std::cout << " RIGHT ";
                     }
                     break;
-                default : std::cout << "ERROR: FindDest() --> unidentified instruction: " << cInstr << std::endl;
+                default : std::cout << "ERROR: FindDest() --> unexpected instruction: " << cInstr << std::endl;
             }
             if (bDebug) std::cout << " to: " << pCurNode->iDatum.sID << std::endl;
             nResult += 1;
@@ -348,8 +350,7 @@ long long my_lcm( std::vector<long long> &vInput ) {
                 nResult = std::lcm( vInput[0], vInput[1] );
                 break;
             default: {
-                    // make a copy of input without element 0
-                    // Note that size of vInput > 2 so this can be done safely
+                    // copy input without element 0. Note that size of vInput > 2 so this can be done safely
                     std::vector<long long> vSmallerInput( std::next( vInput.begin()), vInput.end());
                     // calculate lcm using recursion
                     nResult = std::lcm( vInput[0], my_lcm( vSmallerInput ));
@@ -429,11 +430,10 @@ int main()
         long long nSteps = 0;
         while (!IsEndNode( vNodes[i]->iDatum )) {
             char cInstr = GetNextInstruction();
-            GraphNode *aux = OneStep( vNodes[i], cInstr, false );
-            vNodes[i] = aux;
+            vNodes[i] = OneStep( vNodes[i], cInstr, false );
             nSteps += 1;
         }
-        // store it for this start node
+        // store nr of steps for this start node
         vStepsPerStartNode.push_back( nSteps );
     }
 
