@@ -64,16 +64,22 @@ void CheckPointer( std::string sFuncName, void *ptr );
 // aligns the argument right in a string of length nrChars
 std::string StringAlignedR( std::string sArg, int nrChars = ALIGN_STRLEN );
 std::string StringAlignedR( int         nArg, int nrChars = ALIGN_STRLEN );
+std::string StringAlignedR( long        lArg, int nrChars = ALIGN_STRLEN );
+std::string StringAlignedR( long long  llArg, int nrChars = ALIGN_STRLEN );
 std::string StringAlignedR( float       fArg, int nrChars = ALIGN_STRLEN );
 
 // aligns the argument left in a string of length nrChars
 std::string StringAlignedL( std::string sArg, int nrChars = ALIGN_STRLEN );
 std::string StringAlignedL( int         nArg, int nrChars = ALIGN_STRLEN );
+std::string StringAlignedL( long        lArg, int nrChars = ALIGN_STRLEN );
+std::string StringAlignedL( long long  llArg, int nrChars = ALIGN_STRLEN );
 std::string StringAlignedL( float       fArg, int nrChars = ALIGN_STRLEN );
 
 // centers the argument in a string of length nrChars
 std::string StringAlignedC( std::string sArg, int nrChars = ALIGN_STRLEN );
 std::string StringAlignedC( int         nArg, int nrChars = ALIGN_STRLEN );
+std::string StringAlignedC( long        lArg, int nrChars = ALIGN_STRLEN );
+std::string StringAlignedC( long long  llArg, int nrChars = ALIGN_STRLEN );
 std::string StringAlignedC( float       fArg, int nrChars = ALIGN_STRLEN );
 
 std::string PrintBoolToString( bool var );

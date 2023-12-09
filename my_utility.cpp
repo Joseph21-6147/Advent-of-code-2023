@@ -125,22 +125,23 @@ std::string StringAlignedC( std::string strArg, int nrChars ) {
 }
 
 // overloaded versions for int and float arguments
-std::string StringAlignedR( int   nArg, int nrChars ) { return StringAlignedR( std::to_string( nArg ), nrChars ); }
-std::string StringAlignedR( float fArg, int nrChars ) { return StringAlignedR( std::to_string( fArg ), nrChars ); }
+std::string StringAlignedR( int        nArg, int nrChars ) { return StringAlignedR( std::to_string(  nArg ), nrChars ); }
+std::string StringAlignedR( long       lArg, int nrChars ) { return StringAlignedR( std::to_string(  lArg ), nrChars ); }
+std::string StringAlignedR( long long llArg, int nrChars ) { return StringAlignedR( std::to_string( llArg ), nrChars ); }
+std::string StringAlignedR( float      fArg, int nrChars ) { return StringAlignedR( std::to_string(  fArg ), nrChars ); }
 
-std::string StringAlignedL( int   nArg, int nrChars ) { return StringAlignedL( std::to_string( nArg ), nrChars ); }
-std::string StringAlignedL( float fArg, int nrChars ) { return StringAlignedL( std::to_string( fArg ), nrChars ); }
+std::string StringAlignedL( int        nArg, int nrChars ) { return StringAlignedL( std::to_string(  nArg ), nrChars ); }
+std::string StringAlignedL( long       lArg, int nrChars ) { return StringAlignedL( std::to_string(  lArg ), nrChars ); }
+std::string StringAlignedL( long long llArg, int nrChars ) { return StringAlignedL( std::to_string( llArg ), nrChars ); }
+std::string StringAlignedL( float      fArg, int nrChars ) { return StringAlignedL( std::to_string(  fArg ), nrChars ); }
 
-std::string StringAlignedC( int   nArg, int nrChars ) { return StringAlignedC( std::to_string( nArg ), nrChars ); }
-std::string StringAlignedC( float fArg, int nrChars ) { return StringAlignedC( std::to_string( fArg ), nrChars ); }
+std::string StringAlignedC( int        nArg, int nrChars ) { return StringAlignedC( std::to_string(  nArg ), nrChars ); }
+std::string StringAlignedC( long       lArg, int nrChars ) { return StringAlignedC( std::to_string(  lArg ), nrChars ); }
+std::string StringAlignedC( long long llArg, int nrChars ) { return StringAlignedC( std::to_string( llArg ), nrChars ); }
+std::string StringAlignedC( float      fArg, int nrChars ) { return StringAlignedC( std::to_string(  fArg ), nrChars ); }
 
 std::string PrintBoolToString( bool var ) {
-    std::string s;
-    if (var)
-        s.append("TRUE");
-    else
-        s.append("FALSE");
-    return s;
+    return (var ? "TRUE " : "FALSE");
 }
 
 // ==============================/   utility functions /========================================
